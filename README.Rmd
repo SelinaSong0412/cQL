@@ -13,13 +13,9 @@ knitr::opts_chunk$set(
 
 # cQL
 
-`cQL` implements the proposed clustered Q-learning procedure with the
-M-out-of-N cluster bootstrap for making inference on tailoring variables in a
-two-stage clustered SMART (cSMART).
+This R package `cQL` implements a novel clustered Q-learning method with the $M$-out-of-$N$ cluster bootstrap for making inference on tailoring variables in a two-stage clustered SMART (cSMART).
 
-The package is designed for one completed cSMART dataset at a time. Given a
-user-supplied dataset and user-specified stage-1 and stage-2 Q-functions,
-`cQL()`:
+The package is designed for analyzing one completed cSMART dataset at a time. Given a user-supplied dataset and user-specified stage-1 and stage-2 Q-functions, the main function `cQL()` could:
 
 1. fits the stage-2 Q-function;
 2. estimates the degree of non-regularity;
@@ -88,7 +84,7 @@ The recommended workflow for your own data is:
 
 ## Example 1: Design I cSMART with full second-stage re-randomization
 
-Below we generate a toy Design I cSMART dataset. In this design, all clusters
+Below, we generate a toy Design I cSMART dataset. In this design, all clusters
 are re-randomized at stage 2, so the stage-2 treatment column has no missing
 values.
 
@@ -99,7 +95,7 @@ design1_data <- simulate_csmart_data(
   n_clusters = 40,
   cluster_size = 12,
   rerandomization = "full",
-  seed = 101
+  seed = 412
 )
 
 head(design1_data)
@@ -135,7 +131,7 @@ fit_design1 <- cQL(
   stage2_treat = "A2",
   stage2_tailoring_vars = c("A1", "X2"),
   n_boot = 150,
-  seed = 1,
+  seed = 412,
   verbose = FALSE
 )
 ```
@@ -190,8 +186,8 @@ or III cSMARTs.
 
 ```{r}
 design23_data <- simulate_csmart_data(
-  n_clusters = 48,
-  cluster_size = 12,
+  n_clusters = 40,
+  cluster_size = 20,
   rerandomization = "responder",
   p_rerand = 0.65,
   seed = 2026
@@ -231,7 +227,7 @@ fit_design23 <- cQL(
   stage2_treat = "A2",
   stage2_tailoring_vars = c("A1", "X2"),
   n_boot = 150,
-  seed = 11,
+  seed = 2026,
   verbose = FALSE
 )
 ```
@@ -317,5 +313,5 @@ In practice:
 - Every interaction involving the stage-2 treatment must be a two-way
   interaction with one of the variables listed in `stage2_tailoring_vars`.
 - In the printed stage summary, the stage-2 row has `M = N_rand` because stage
-  2 uses the cluster bootstrap over the stage-2 randomized clusters, whereas
-  the stage-1 row uses the manuscript-selected M-out-of-N resample size.
+  2 uses the full cluster bootstrap over the stage-2 randomized clusters, whereas
+  the stage-1 row uses the selected M-out-of-N resample size. See more technical detail about the algorithm design in [the original manuscript](https://arxiv.org/abs/2505.00822)
