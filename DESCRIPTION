@@ -1,0 +1,29 @@
+Package: cQL
+Type: Package
+Title: Clustered Q-Learning with the M-out-of-N Cluster Bootstrap
+Version: 0.1.0
+Authors@R: c(
+    person("Yao", "Song", email = "yaos@umich.edu", role = c("aut", "cre"))
+  )
+Author: Yao Song [aut, cre]
+Maintainer: Yao Song <yaos@umich.edu>
+Description: Implements clustered Q-learning for two-stage clustered
+    sequential multiple assignment randomized trials (cSMARTs) using the
+    manuscript's M-out-of-N cluster bootstrap procedure. The package supports
+    both full second-stage re-randomization (type I cSMARTs) and limited
+    second-stage re-randomization (type II/III cSMARTs) by allowing the
+    stage-2 treatment column to be missing for clusters that were not
+    re-randomized.
+License: MIT + file LICENSE
+Depends:
+    R (>= 4.1.0)
+Imports:
+    geepack,
+    sandwich,
+    stats
+Suggests:
+    knitr,
+    rmarkdown
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
