@@ -34,7 +34,14 @@ The output includes:
 
 ## Installation
 
-For local development from the `clusterQ/cQL` folder:
+To install this package from GitHub:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("SelinaSong0412/cQL")
+```
+
+For local development:
 
 ```r
 devtools::install(".")
