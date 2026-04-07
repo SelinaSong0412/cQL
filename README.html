@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+padding-top: 0px;
+}
+</style>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<h1 id="cql">cQL</h1>
+<p>This R package <code>cQL</code> implements a novel clustered
+Q-learning method with the <span class="math inline">\(M\)</span>-out-of-<span class="math inline">\(N\)</span> cluster bootstrap for making inference
+on tailoring variables in a two-stage clustered SMART (cSMART).</p>
+<p>The package is designed for analyzing one completed cSMART dataset at
+a time. Given a user-supplied dataset and user-specified stage-1 and
+stage-2 Q-functions, the main function <code>cQL()</code> could:</p>
+<ol style="list-style-type: decimal">
+<li>fits the stage-2 Q-function;</li>
+<li>estimates the degree of non-regularity;</li>
+<li>selects the stage-1 resample size <code>M</code>;</li>
+<li>constructs the stage-1 pseudo-outcome; and</li>
+<li>returns bootstrap-based inference for both stages.</li>
+</ol>
+<p>The output includes:</p>
+<ul>
+<li>regression coefficient estimates;</li>
+<li>confidence intervals at the requested level (95% by default);</li>
+<li>bootstrap standard errors;</li>
+<li>bootstrap p-values;</li>
+<li>significance stars; and</li>
+<li>a stage summary showing <code>N</code>, <code>N_rand</code>, and
+<code>M</code> for each stage.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>To install this package from GitHub:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># install.packages(&quot;remotes&quot;)</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;SelinaSong0412/cQL&quot;</span>)</span></code></pre></div>
+<p>For local development:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+<p>Then load the package:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(cQL)</span></code></pre></div>
+<h2 id="data-format-required-by-cql">Data format required by
+<code>cQL()</code></h2>
+<p>Before using the package, prepare the cSMART data in the following
+format.</p>
+<ol style="list-style-type: decimal">
+<li>The dataset should be at the individual level, so each row is one
+individual.</li>
+<li>The dataset should contain a cluster id column.</li>
+<li>The dataset should contain one stage-1 treatment column and one
+stage-2 treatment column.</li>
+<li>The dataset should contain the final observed outcome column
+<code>Y</code>.</li>
+<li>If the dataset also contains an observed stage-1 intermediate
+outcome, that column should be named <code>Y1</code>.</li>
+<li>If the cSMART is a Design II or III trial with limited second-stage
+re-randomization, then the stage-2 treatment should be <code>NA</code>
+for clusters that were not re-randomized at stage 2.</li>
+<li>Cluster-level variables such as the treatments and candidate
+tailoring variables should be repeated across all individuals within the
+same cluster.</li>
+</ol>
+<p>In other words:</p>
+<ul>
+<li>for Design I cSMART data, the stage-2 treatment column is fully
+observed;</li>
+<li>for Design II or III cSMART data, the stage-2 treatment column
+contains <code>NA</code> for non-re-randomized clusters.</li>
+<li>if the user only has the final observed outcome <code>Y</code>, then
+the stage-1 pseudo-outcome is built from the stage-2 pseudo-outcome
+alone;</li>
+<li>if the user has both <code>Y1</code> and <code>Y</code>, then the
+stage-1 pseudo-outcome is built as <code>Y1 +</code> the stage-2
+pseudo-outcome.</li>
+</ul>
+<p>The package can work with any binary coding of the two treatment
+columns. If the treatments are not already coded as <code>-1</code> and
+<code>1</code>, <code>cQL()</code> internally recodes them and stores
+the mapping in the fitted object.</p>
+<p>The stage-1 formula should always use <code>Y1_tilde</code> as its
+response, for example <code>Y1_tilde ~ X1 * A1</code>. If
+<code>Y1</code> is available, the stage-2 formula may include
+<code>Y1</code> as a predictor.</p>
+<p>The function also lets the user choose the significance level through
+<code>alpha</code>. If <code>alpha = NULL</code>, the package uses the
+default <code>alpha = 0.05</code>, which gives 95% confidence intervals.
+For example, set <code>alpha = 0.10</code> for 90% confidence
+intervals.</p>
+<h2 id="recommended-workflow">Recommended workflow</h2>
+<p>The recommended workflow for your own data is:</p>
+<ol style="list-style-type: decimal">
+<li>prepare the data in the required format;</li>
+<li>specify the stage-2 and stage-1 Q-functions;</li>
+<li>fit <code>cQL()</code>;</li>
+<li>inspect <code>fit$stage_summary</code> to see how many clusters are
+used at each stage and what <code>M</code> was selected; and</li>
+<li>inspect <code>fit$stage2</code> and <code>fit$stage1</code> to
+interpret the stage-specific tailoring effects.</li>
+</ol>
+<h2 id="example-1-design-i-csmart-with-full-second-stage-re-randomization">Example
+1: Design I cSMART with full second-stage re-randomization</h2>
+<p>Below, we generate a toy Design I cSMART dataset. In this design, all
+clusters are re-randomized at stage 2, so the stage-2 treatment column
+has no missing values.</p>
+<h3 id="step-1-generate-a-full-re-randomization-dataset">Step 1:
+generate a full re-randomization dataset</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>design1_data <span class="ot">&lt;-</span> <span class="fu">simulate_csmart_data</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="at">n_clusters =</span> <span class="dv">40</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="at">cluster_size =</span> <span class="dv">20</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  <span class="at">rerandomization =</span> <span class="st">&quot;full&quot;</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">111</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>)</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="fu">head</span>(design1_data)</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt;   cluster_id patient_id X1 A1 X2 A2 response_status rerandomized        Y</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; 1          1          1  1  1  1  1              NA            1 2.706349</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; 2          1          2  1  1  1  1              NA            1 4.285709</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt; 3          1          3  1  1  1  1              NA            1 1.089771</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt; 4          1          4  1  1  1  1              NA            1 2.328823</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt; 5          1          5  1  1  1  1              NA            1 3.537776</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt; 6          1          6  1  1  1  1              NA            1 1.249130</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(design1_data<span class="sc">$</span>A2))</span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt; FALSE </span></span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="co">#&gt;   800</span></span></code></pre></div>
+<p>The table above should show that <code>A2</code> is never missing,
+which is what we expect for Design I.</p>
+<h3 id="step-2-specify-the-q-functions">Step 2: specify the
+Q-functions</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>s2_formula <span class="ot">&lt;-</span> Y <span class="sc">~</span> X1 <span class="sc">*</span> A1 <span class="sc">+</span> A1 <span class="sc">*</span> A2 <span class="sc">+</span> A2<span class="sc">:</span>X2</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>s1_formula <span class="ot">&lt;-</span> Y1_tilde <span class="sc">~</span> X1 <span class="sc">*</span> A1</span></code></pre></div>
+<p>In this example:</p>
+<ul>
+<li>the stage-2 candidate tailoring variables are <code>A1</code> and
+<code>X2</code>, because they interact with <code>A2</code>;</li>
+<li>the stage-1 candidate tailoring variable is <code>X1</code>, because
+it interacts with <code>A1</code>.</li>
+</ul>
+<h3 id="step-3-fit-the-clustered-q-learning-analysis">Step 3: fit the
+clustered Q-learning analysis</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>fit_design1 <span class="ot">&lt;-</span> <span class="fu">cQL</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="at">data =</span> design1_data,</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="at">stage2_formula =</span> s2_formula,</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="at">stage1_formula =</span> s1_formula,</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="at">cluster =</span> <span class="st">&quot;cluster_id&quot;</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="at">stage1_treat =</span> <span class="st">&quot;A1&quot;</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  <span class="at">stage2_treat =</span> <span class="st">&quot;A2&quot;</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  <span class="at">stage2_tailoring_vars =</span> <span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;X2&quot;</span>),</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  <span class="at">working_correlation =</span> <span class="st">&quot;exchangeable&quot;</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>  <span class="at">alpha =</span> <span class="cn">NULL</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>  <span class="at">n_boot =</span> <span class="dv">150</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">412</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>)</span></code></pre></div>
+<p>Here we use the exchangeable working correlation model by specifying
+<code>working_correlation = &quot;exchangeable&quot;</code>, which is also the
+default. If desired, the user can instead set
+<code>working_correlation = &quot;independence&quot;</code>.</p>
+<h3 id="step-4-inspect-how-the-algorithm-works-internally">Step 4:
+inspect how the algorithm works internally</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>fit_design1<span class="sc">$</span>stage_summary</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt;     stage  N N_rand  M                                        bootstrap</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt; 1 Stage 2 40     40 40 Cluster bootstrap on stage-2 randomized clusters</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt; 2 Stage 1 40     40 38                     M-out-of-N cluster bootstrap</span></span></code></pre></div>
+<p>How to read this output:</p>
+<ul>
+<li><code>N</code> is the total number of clusters in the dataset.</li>
+<li><code>N_rand</code> is the number of clusters randomized at that
+stage.</li>
+<li><code>M</code> is the bootstrap resample size used at that
+stage.</li>
+</ul>
+<p>For Design I:</p>
+<ul>
+<li>at stage 2, all clusters are randomized, so <code>N_rand = N</code>,
+and stage 2 uses a cluster bootstrap over those randomized clusters, so
+<code>M = N_rand</code>;</li>
+<li>at stage 1, all clusters are also randomized, but the manuscript’s
+M-out-of-N rule may choose <code>M &lt; N</code> when non-regularity is
+present.</li>
+</ul>
+<h3 id="step-5-inspect-the-stage-2-inference">Step 5: inspect the
+stage-2 inference</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>fit_design1<span class="sc">$</span>stage2</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co">#&gt;          term   estimate    conf.low conf.high  std.error    p.value</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">#&gt; 1 (Intercept) 0.50123442  0.32607911 0.6501724 0.08184193 0.01324503</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt; 2          X1 0.67502287  0.52848726 0.7825857 0.06418361 0.01324503</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt; 3          A1 0.25006349  0.10566007 0.3666382 0.07306235 0.01324503</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt; 4          A2 0.27970228  0.15297888 0.4273272 0.06991907 0.01324503</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt; 5       X1:A1 0.06841392 -0.05378174 0.2066801 0.06925594 0.33112583</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; 6       A1:A2 0.30846504  0.17474942 0.4430473 0.07198258 0.01324503</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt; 7       A2:X2 0.34480828  0.21617948 0.5095903 0.06857789 0.01324503</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt;   significance</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt; 1            *</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt; 2            *</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; 3            *</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; 4            *</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; 5             </span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co">#&gt; 6            *</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co">#&gt; 7            *</span></span></code></pre></div>
+<p>To interpret the stage-2 table, focus especially on the terms
+involving <code>A2</code>. If an interaction involving <code>A2</code>
+has a confidence interval that excludes zero and a small p-value, that
+suggests the corresponding variable may be useful as a stage-2 tailoring
+variable.</p>
+<h3 id="step-6-inspect-the-stage-1-inference">Step 6: inspect the
+stage-1 inference</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>fit_design1<span class="sc">$</span>stage1</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co">#&gt;          term   estimate   conf.low conf.high  std.error    p.value</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co">#&gt; 1 (Intercept) 0.90998435  0.6874282 1.0947726 0.11091811 0.01324503</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">#&gt; 2          X1 0.66366705  0.5121467 0.7849744 0.06881373 0.01324503</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#&gt; 3          A1 0.30633507  0.1244976 0.4751951 0.08885414 0.01324503</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#&gt; 4       X1:A1 0.05514058 -0.0937298 0.1616316 0.07016592 0.47682119</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">#&gt;   significance</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co">#&gt; 1            *</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co">#&gt; 2            *</span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co">#&gt; 3            *</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co">#&gt; 4</span></span></code></pre></div>
+<p>The stage-1 table is built after constructing the stage-1
+pseudo-outcome from the fitted stage-2 model. In this example there is
+no observed <code>Y1</code>, so <code>Y1_tilde</code> is the stage-2
+pseudo-outcome itself. Terms involving <code>A1</code> are the stage-1
+tailoring effects of interest.</p>
+<h2 id="example-2-design-ii-or-iii-csmart-with-limited-second-stage-re-randomization">Example
+2: Design II or III cSMART with limited second-stage
+re-randomization</h2>
+<p>Now we generate a toy cSMART dataset in which only a subset of
+clusters is re-randomized at stage 2. This mimics the data format
+required for Design II or III cSMARTs.</p>
+<h3 id="step-1-generate-a-partial-re-randomization-dataset">Step 1:
+generate a partial re-randomization dataset</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>design23_data <span class="ot">&lt;-</span> <span class="fu">simulate_csmart_data</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="at">n_clusters =</span> <span class="dv">40</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="at">cluster_size =</span> <span class="dv">20</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="at">rerandomization =</span> <span class="st">&quot;nonresponder&quot;</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="at">p_rerand =</span> <span class="fl">0.7</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">222</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>)</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="fu">head</span>(design23_data)</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="co">#&gt;   cluster_id patient_id X1 A1 X2 A2 response_status rerandomized          Y</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="co">#&gt; 1          1          1 -1 -1 -1 -1               0            1  0.5567023</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="co">#&gt; 2          1          2 -1 -1 -1 -1               0            1  1.0253915</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="co">#&gt; 3          1          3 -1 -1 -1 -1               0            1  0.5940704</span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="co">#&gt; 4          1          4 -1 -1 -1 -1               0            1 -0.4244146</span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="co">#&gt; 5          1          5 -1 -1 -1 -1               0            1 -1.3192431</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="co">#&gt; 6          1          6 -1 -1 -1 -1               0            1 -0.9299379</span></span></code></pre></div>
+<p>Here the stage-2 treatment column contains <code>NA</code> for
+clusters that were not re-randomized at stage 2. This is the key
+formatting rule for Design II or III data.</p>
+<p>The package does not need separate arguments telling it whether the
+re-randomized clusters were responders or non-responders. The crucial
+input is simply:</p>
+<ul>
+<li>one row per individual; and</li>
+<li><code>NA</code> in the stage-2 treatment column for clusters not
+re-randomized.</li>
+</ul>
+<h3 id="step-2-use-the-same-q-functions">Step 2: use the same
+Q-functions</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>s2_formula</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co">#&gt; Y ~ X1 * A1 + A1 * A2 + A2:X2</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>s1_formula</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co">#&gt; Y1_tilde ~ X1 * A1</span></span></code></pre></div>
+<h3 id="step-3-fit-the-clustered-q-learning-analysis-1">Step 3: fit the
+clustered Q-learning analysis</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>fit_design23 <span class="ot">&lt;-</span> <span class="fu">cQL</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="at">data =</span> design23_data,</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="at">stage2_formula =</span> s2_formula,</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="at">stage1_formula =</span> s1_formula,</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="at">cluster =</span> <span class="st">&quot;cluster_id&quot;</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  <span class="at">stage1_treat =</span> <span class="st">&quot;A1&quot;</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>  <span class="at">stage2_treat =</span> <span class="st">&quot;A2&quot;</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  <span class="at">stage2_tailoring_vars =</span> <span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;X2&quot;</span>),</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  <span class="at">working_correlation =</span> <span class="st">&quot;exchangeable&quot;</span>,</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>  <span class="at">alpha =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>  <span class="at">n_boot =</span> <span class="dv">150</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">412</span>,</span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a>)</span></code></pre></div>
+<h3 id="step-4-inspect-the-stage-summary">Step 4: inspect the stage
+summary</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>fit_design23<span class="sc">$</span>stage_summary</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co">#&gt;     stage  N N_rand  M                                        bootstrap</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co">#&gt; 1 Stage 2 40     26 26 Cluster bootstrap on stage-2 randomized clusters</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co">#&gt; 2 Stage 1 40     40 39                     M-out-of-N cluster bootstrap</span></span></code></pre></div>
+<p>This output is often the easiest way to understand what the algorithm
+is doing internally.</p>
+<p>For a partial re-randomization design:</p>
+<ul>
+<li>the stage-2 row should have <code>N_rand &lt; N</code>, because only
+some clusters are randomized at stage 2;</li>
+<li>the stage-2 bootstrap resamples those stage-2 randomized clusters,
+so the stage-2 row has <code>M = N_rand</code>;</li>
+<li>the stage-1 row reports the manuscript-selected stage-1
+<code>M</code> for the M-out-of-N bootstrap.</li>
+</ul>
+<h3 id="step-5-inspect-the-stage-2-inference-1">Step 5: inspect the
+stage-2 inference</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>fit_design23<span class="sc">$</span>stage2</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co">#&gt;          term  estimate     conf.low conf.high  std.error    p.value</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co">#&gt; 1 (Intercept) 0.5829939  0.355488360 0.8466682 0.11767260 0.01324503</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co">#&gt; 2          X1 0.6734640  0.440746446 0.8941773 0.11612442 0.01324503</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co">#&gt; 3          A1 0.1853665 -0.067189568 0.4243392 0.13019465 0.17218543</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co">#&gt; 4          A2 0.5662042  0.425349181 0.6897801 0.07342242 0.01324503</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co">#&gt; 5       X1:A1 0.1912644  0.001678435 0.4007254 0.10940519 0.06622517</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#&gt; 6       A1:A2 0.1014308 -0.074627778 0.2570886 0.08823046 0.29139073</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#&gt; 7       A2:X2 0.3173520  0.048673612 0.5304483 0.12687627 0.03973510</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt;   significance</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt; 1            *</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co">#&gt; 2            *</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="co">#&gt; 3             </span></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co">#&gt; 4            *</span></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="co">#&gt; 5             </span></span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co">#&gt; 6             </span></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co">#&gt; 7            *</span></span></code></pre></div>
+<p>The interpretation is the same as before, but now the stage-2
+regression is fit only to the clusters that were actually re-randomized
+at stage 2.</p>
+<h3 id="step-6-inspect-the-stage-1-inference-1">Step 6: inspect the
+stage-1 inference</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>fit_design23<span class="sc">$</span>stage1</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co">#&gt;          term  estimate   conf.low conf.high  std.error    p.value significance</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co">#&gt; 1 (Intercept) 0.8873112  0.6761015 1.0409854 0.09915426 0.01324503            *</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co">#&gt; 2          X1 0.7327109  0.5535310 0.9471056 0.10558044 0.01324503            *</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co">#&gt; 3          A1 0.4909462  0.2092183 0.7740152 0.14766397 0.01324503            *</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co">#&gt; 4       X1:A1 0.1349813 -0.0460383 0.3416661 0.09649030 0.19867550</span></span></code></pre></div>
+<p>For limited second-stage re-randomization, the manuscript’s stage-1
+pseudo-outcome rule is used:</p>
+<ul>
+<li>for clusters re-randomized at stage 2, the pseudo-outcome uses the
+fitted stage-2 Q-function;</li>
+<li>for clusters not re-randomized at stage 2, the pseudo-outcome equals
+the observed outcome.</li>
+</ul>
+<h2 id="example-3-design-ii-csmart-with-an-observed-stage-1-outcome-y1">Example
+3: Design II cSMART with an observed stage-1 outcome
+<code>Y1</code></h2>
+<p>This example uses limited second-stage re-randomization again, but
+now the input data include both an observed stage-1 intermediate outcome
+<code>Y1</code> and the final outcome <code>Y</code>.</p>
+<h3 id="step-1-create-a-design-ii-style-dataset-with-both-y1-and-y">Step
+1: create a Design II-style dataset with both <code>Y1</code> and
+<code>Y</code></h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>design23_y1_data <span class="ot">&lt;-</span> <span class="fu">simulate_csmart_data</span>(</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="at">n_clusters =</span> <span class="dv">40</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="at">cluster_size =</span> <span class="dv">20</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  <span class="at">rerandomization =</span> <span class="st">&quot;nonresponder&quot;</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>  <span class="at">p_rerand =</span> <span class="fl">0.7</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">333</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>)</span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">412</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>cluster_effect_y1 <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">rnorm</span>(</span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a>  <span class="fu">length</span>(<span class="fu">unique</span>(design23_y1_data<span class="sc">$</span>cluster_id)),</span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a>  <span class="at">sd =</span> <span class="fl">0.25</span></span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a>)</span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a><span class="fu">names</span>(cluster_effect_y1) <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">unique</span>(design23_y1_data<span class="sc">$</span>cluster_id))</span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a>design23_y1_data<span class="sc">$</span>Y1 <span class="ot">&lt;-</span> <span class="fu">with</span>(</span>
+<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a>  design23_y1_data,</span>
+<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a>  <span class="fl">0.4</span> <span class="sc">+</span></span>
+<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a>    <span class="fl">0.5</span> <span class="sc">*</span> X1 <span class="sc">+</span></span>
+<span id="cb16-20"><a href="#cb16-20" tabindex="-1"></a>    <span class="fl">0.3</span> <span class="sc">*</span> A1 <span class="sc">+</span></span>
+<span id="cb16-21"><a href="#cb16-21" tabindex="-1"></a>    <span class="fl">0.2</span> <span class="sc">*</span> X1 <span class="sc">*</span> A1 <span class="sc">+</span></span>
+<span id="cb16-22"><a href="#cb16-22" tabindex="-1"></a>    cluster_effect_y1[<span class="fu">as.character</span>(cluster_id)] <span class="sc">+</span></span>
+<span id="cb16-23"><a href="#cb16-23" tabindex="-1"></a>    stats<span class="sc">::</span><span class="fu">rnorm</span>(<span class="fu">nrow</span>(design23_y1_data), <span class="at">sd =</span> <span class="fl">0.6</span>)</span>
+<span id="cb16-24"><a href="#cb16-24" tabindex="-1"></a>)</span>
+<span id="cb16-25"><a href="#cb16-25" tabindex="-1"></a></span>
+<span id="cb16-26"><a href="#cb16-26" tabindex="-1"></a>design23_y1_data<span class="sc">$</span>Y <span class="ot">&lt;-</span> design23_y1_data<span class="sc">$</span>Y <span class="sc">+</span> <span class="fl">0.35</span> <span class="sc">*</span> design23_y1_data<span class="sc">$</span>Y1</span>
+<span id="cb16-27"><a href="#cb16-27" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" tabindex="-1"></a><span class="fu">head</span>(design23_y1_data[<span class="fu">c</span>(<span class="st">&quot;cluster_id&quot;</span>, <span class="st">&quot;patient_id&quot;</span>, <span class="st">&quot;X1&quot;</span>, <span class="st">&quot;A1&quot;</span>, <span class="st">&quot;X2&quot;</span>, <span class="st">&quot;A2&quot;</span>, <span class="st">&quot;Y1&quot;</span>, <span class="st">&quot;Y&quot;</span>)])</span>
+<span id="cb16-29"><a href="#cb16-29" tabindex="-1"></a><span class="co">#&gt;   cluster_id patient_id X1 A1 X2 A2          Y1         Y</span></span>
+<span id="cb16-30"><a href="#cb16-30" tabindex="-1"></a><span class="co">#&gt; 1          1          1  1 -1 -1  1  0.13237210  1.106925</span></span>
+<span id="cb16-31"><a href="#cb16-31" tabindex="-1"></a><span class="co">#&gt; 2          1          2  1 -1 -1  1  0.74401271 -1.149350</span></span>
+<span id="cb16-32"><a href="#cb16-32" tabindex="-1"></a><span class="co">#&gt; 3          1          3  1 -1 -1  1  0.76141055  1.883481</span></span>
+<span id="cb16-33"><a href="#cb16-33" tabindex="-1"></a><span class="co">#&gt; 4          1          4  1 -1 -1  1  0.85311440  1.452291</span></span>
+<span id="cb16-34"><a href="#cb16-34" tabindex="-1"></a><span class="co">#&gt; 5          1          5  1 -1 -1  1  0.01521741  1.556063</span></span>
+<span id="cb16-35"><a href="#cb16-35" tabindex="-1"></a><span class="co">#&gt; 6          1          6  1 -1 -1  1 -0.37251960  1.418785</span></span></code></pre></div>
+<h3 id="step-2-specify-the-q-functions-1">Step 2: specify the
+Q-functions</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>s2_formula_y1 <span class="ot">&lt;-</span> Y <span class="sc">~</span> Y1 <span class="sc">+</span> X1 <span class="sc">*</span> A1 <span class="sc">+</span> A1 <span class="sc">*</span> A2 <span class="sc">+</span> A2<span class="sc">:</span>X2</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>s1_formula_y1 <span class="ot">&lt;-</span> Y1_tilde <span class="sc">~</span> X1 <span class="sc">*</span> A1</span></code></pre></div>
+<p>Here <code>Y1</code> is allowed in the stage-2 formula, but the
+stage-1 formula still uses <code>Y1_tilde</code> as its response.</p>
+<h3 id="step-3-fit-the-clustered-q-learning-analysis-2">Step 3: fit the
+clustered Q-learning analysis</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>fit_design23_y1 <span class="ot">&lt;-</span> <span class="fu">cQL</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="at">data =</span> design23_y1_data,</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="at">stage2_formula =</span> s2_formula_y1,</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>  <span class="at">stage1_formula =</span> s1_formula_y1,</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>  <span class="at">cluster =</span> <span class="st">&quot;cluster_id&quot;</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>  <span class="at">stage1_treat =</span> <span class="st">&quot;A1&quot;</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>  <span class="at">stage2_treat =</span> <span class="st">&quot;A2&quot;</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>  <span class="at">stage2_tailoring_vars =</span> <span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;X2&quot;</span>),</span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>  <span class="at">working_correlation =</span> <span class="st">&quot;exchangeable&quot;</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a>  <span class="at">alpha =</span> <span class="cn">NULL</span>,</span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a>  <span class="at">n_boot =</span> <span class="dv">150</span>,</span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">412</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a>)</span></code></pre></div>
+<h3 id="step-4-inspect-the-results">Step 4: inspect the results</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>fit_design23_y1<span class="sc">$</span>stage_summary</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co">#&gt;     stage  N N_rand  M                                        bootstrap</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co">#&gt; 1 Stage 2 40     26 26 Cluster bootstrap on stage-2 randomized clusters</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co">#&gt; 2 Stage 1 40     40 38                     M-out-of-N cluster bootstrap</span></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>fit_design23_y1<span class="sc">$</span>stage2</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="co">#&gt;          term  estimate    conf.low conf.high  std.error    p.value</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co">#&gt; 1 (Intercept) 0.6969863  0.44862376 0.9197475 0.12875327 0.01324503</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="co">#&gt; 2          Y1 0.2530020  0.06700422 0.4010286 0.09103561 0.02649007</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="co">#&gt; 3          X1 0.5902799  0.35923198 0.8030698 0.11440995 0.01324503</span></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a><span class="co">#&gt; 4          A1 0.4161941  0.16176055 0.6595230 0.13818738 0.02649007</span></span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a><span class="co">#&gt; 5          A2 0.4068680  0.15723999 0.6569425 0.13294951 0.02649007</span></span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a><span class="co">#&gt; 6       X1:A1 0.2474096 -0.01332455 0.4632225 0.12647576 0.09271523</span></span>
+<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a><span class="co">#&gt; 7       A1:A2 0.4300958  0.16377534 0.7011124 0.14156313 0.01324503</span></span>
+<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a><span class="co">#&gt; 8       A2:X2 0.3728801  0.10805505 0.5271479 0.10716127 0.01324503</span></span>
+<span id="cb19-15"><a href="#cb19-15" tabindex="-1"></a><span class="co">#&gt;   significance</span></span>
+<span id="cb19-16"><a href="#cb19-16" tabindex="-1"></a><span class="co">#&gt; 1            *</span></span>
+<span id="cb19-17"><a href="#cb19-17" tabindex="-1"></a><span class="co">#&gt; 2            *</span></span>
+<span id="cb19-18"><a href="#cb19-18" tabindex="-1"></a><span class="co">#&gt; 3            *</span></span>
+<span id="cb19-19"><a href="#cb19-19" tabindex="-1"></a><span class="co">#&gt; 4            *</span></span>
+<span id="cb19-20"><a href="#cb19-20" tabindex="-1"></a><span class="co">#&gt; 5            *</span></span>
+<span id="cb19-21"><a href="#cb19-21" tabindex="-1"></a><span class="co">#&gt; 6             </span></span>
+<span id="cb19-22"><a href="#cb19-22" tabindex="-1"></a><span class="co">#&gt; 7            *</span></span>
+<span id="cb19-23"><a href="#cb19-23" tabindex="-1"></a><span class="co">#&gt; 8            *</span></span>
+<span id="cb19-24"><a href="#cb19-24" tabindex="-1"></a>fit_design23_y1<span class="sc">$</span>stage1</span>
+<span id="cb19-25"><a href="#cb19-25" tabindex="-1"></a><span class="co">#&gt;          term  estimate  conf.low conf.high std.error    p.value significance</span></span>
+<span id="cb19-26"><a href="#cb19-26" tabindex="-1"></a><span class="co">#&gt; 1 (Intercept) 1.5749700 1.2395897 1.8775642 0.1589357 0.01324503            *</span></span>
+<span id="cb19-27"><a href="#cb19-27" tabindex="-1"></a><span class="co">#&gt; 2          X1 1.2922897 0.9842671 1.5013229 0.1274876 0.01324503            *</span></span>
+<span id="cb19-28"><a href="#cb19-28" tabindex="-1"></a><span class="co">#&gt; 3          A1 0.9664480 0.6947004 1.3110249 0.1511807 0.01324503            *</span></span>
+<span id="cb19-29"><a href="#cb19-29" tabindex="-1"></a><span class="co">#&gt; 4       X1:A1 0.5808454 0.2285540 0.8005064 0.1425428 0.01324503            *</span></span></code></pre></div>
+<p>In this scenario the stage-1 pseudo-outcome is:</p>
+<ul>
+<li><code>Y1 +</code> the fitted stage-2 pseudo-outcome for clusters
+re-randomized at stage 2;</li>
+<li><code>Y1 + Y</code> for clusters not re-randomized at stage 2.</li>
+</ul>
+<h2 id="applying-cql-to-your-own-data">Applying <code>cQL()</code> to
+your own data</h2>
+<p>After your data are prepared, the analysis for your own cSMART
+dataset will look like this:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>my_fit <span class="ot">&lt;-</span> <span class="fu">cQL</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="at">data =</span> my_csmart_data,</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>  <span class="at">stage2_formula =</span> Y <span class="sc">~</span> X1 <span class="sc">*</span> A1 <span class="sc">+</span> A1 <span class="sc">*</span> A2 <span class="sc">+</span> A2<span class="sc">:</span>X2,</span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>  <span class="at">stage1_formula =</span> Y1_tilde <span class="sc">~</span> X1 <span class="sc">*</span> A1,</span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>  <span class="at">cluster =</span> <span class="st">&quot;cluster_id&quot;</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>  <span class="at">stage1_treat =</span> <span class="st">&quot;A1&quot;</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>  <span class="at">stage2_treat =</span> <span class="st">&quot;A2&quot;</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a>  <span class="at">stage2_tailoring_vars =</span> <span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;X2&quot;</span>),</span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a>  <span class="at">working_correlation =</span> <span class="st">&quot;exchangeable&quot;</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a>  <span class="at">alpha =</span> <span class="cn">NULL</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a>  <span class="at">n_boot =</span> <span class="dv">1000</span>,</span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a>  <span class="at">fixed_xi =</span> <span class="fl">0.025</span></span>
+<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a>)</span>
+<span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" tabindex="-1"></a>my_fit<span class="sc">$</span>stage_summary</span>
+<span id="cb20-16"><a href="#cb20-16" tabindex="-1"></a>my_fit<span class="sc">$</span>stage2</span>
+<span id="cb20-17"><a href="#cb20-17" tabindex="-1"></a>my_fit<span class="sc">$</span>stage1</span></code></pre></div>
+<p>In practice:</p>
+<ul>
+<li>start with <code>my_fit$stage_summary</code> to see the cluster
+counts used by the algorithm;</li>
+<li>then inspect <code>my_fit$stage2</code> to evaluate candidate
+stage-2 tailoring variables;</li>
+<li>then inspect <code>my_fit$stage1</code> to evaluate candidate
+stage-1 tailoring variables.</li>
+</ul>
+<p>If your data contain an observed stage-1 outcome <code>Y1</code>,
+keep the stage-1 formula as <code>Y1_tilde ~ ...</code> and optionally
+include <code>Y1</code> in <code>stage2_formula</code>.</p>
+<p>If you want a confidence level other than 95%, specify
+<code>alpha</code> directly. For example, use <code>alpha = 0.10</code>
+to request 90% confidence intervals.</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>The current package targets the two-stage cSMART setting developed
+in the manuscript.</li>
+<li>The stage-2 formula must include the main effect of the stage-2
+treatment.</li>
+<li>Every interaction involving the stage-2 treatment must be a two-way
+interaction with one of the variables listed in
+<code>stage2_tailoring_vars</code>.</li>
+<li>In the printed stage summary, the stage-2 row has
+<code>M = N_rand</code> because stage 2 uses the full cluster bootstrap
+over the stage-2 randomized clusters, whereas the stage-1 row uses the
+selected M-out-of-N resample size. See more technical detail about the
+algorithm design in <a href="https://arxiv.org/abs/2505.00822">the
+original manuscript</a></li>
+</ul>
+
+</body>
+</html>

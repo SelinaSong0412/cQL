@@ -28,7 +28,7 @@ The package is designed for analyzing one completed cSMART dataset at a time. Gi
 The output includes:
 
 - regression coefficient estimates;
-- 95% confidence intervals;
+- confidence intervals at the requested level (95% by default);
 - bootstrap standard errors;
 - bootstrap p-values;
 - significance stars; and
@@ -63,10 +63,13 @@ Before using the package, prepare the cSMART data in the following format.
 2. The dataset should contain a cluster id column.
 3. The dataset should contain one stage-1 treatment column and one stage-2
    treatment column.
-4. If the cSMART is a Design II or III trial with limited second-stage
+4. The dataset should contain the final observed outcome column `Y`.
+5. If the dataset also contains an observed stage-1 intermediate outcome, that
+   column should be named `Y1`.
+6. If the cSMART is a Design II or III trial with limited second-stage
    re-randomization, then the stage-2 treatment should be `NA` for clusters that
    were not re-randomized at stage 2.
-5. Cluster-level variables such as the treatments and candidate tailoring
+7. Cluster-level variables such as the treatments and candidate tailoring
    variables should be repeated across all individuals within the same cluster.
 
 In other words:
@@ -74,10 +77,23 @@ In other words:
 - for Design I cSMART data, the stage-2 treatment column is fully observed;
 - for Design II or III cSMART data, the stage-2 treatment column contains
   `NA` for non-re-randomized clusters.
+- if the user only has the final observed outcome `Y`, then the stage-1
+  pseudo-outcome is built from the stage-2 pseudo-outcome alone;
+- if the user has both `Y1` and `Y`, then the stage-1 pseudo-outcome is built
+  as `Y1 +` the stage-2 pseudo-outcome.
 
 The package can work with any binary coding of the two treatment columns. If
 the treatments are not already coded as `-1` and `1`, `cQL()` internally
 recodes them and stores the mapping in the fitted object.
+
+The stage-1 formula should always use `Y1_tilde` as its response, for example
+`Y1_tilde ~ X1 * A1`. If `Y1` is available, the stage-2 formula may include
+`Y1` as a predictor.
+
+The function also lets the user choose the significance level through `alpha`.
+If `alpha = NULL`, the package uses the default `alpha = 0.05`, which gives
+95% confidence intervals. For example, set `alpha = 0.10` for 90% confidence
+intervals.
 
 ## Recommended workflow
 
@@ -102,9 +118,9 @@ values.
 ```{r}
 design1_data <- simulate_csmart_data(
   n_clusters = 40,
-  cluster_size = 12,
+  cluster_size = 20,
   rerandomization = "full",
-  seed = 412
+  seed = 111
 )
 
 head(design1_data)
@@ -118,7 +134,7 @@ expect for Design I.
 
 ```{r}
 s2_formula <- Y ~ X1 * A1 + A1 * A2 + A2:X2
-s1_formula <- Y1 ~ X1 * A1
+s1_formula <- Y1_tilde ~ X1 * A1
 ```
 
 In this example:
@@ -139,11 +155,17 @@ fit_design1 <- cQL(
   stage1_treat = "A1",
   stage2_treat = "A2",
   stage2_tailoring_vars = c("A1", "X2"),
+  working_correlation = "exchangeable",
+  alpha = NULL,
   n_boot = 150,
   seed = 412,
   verbose = FALSE
 )
 ```
+
+Here we use the exchangeable working correlation model by specifying
+`working_correlation = "exchangeable"`, which is also the default. If desired,
+the user can instead set `working_correlation = "independence"`.
 
 ### Step 4: inspect how the algorithm works internally
 
@@ -182,8 +204,9 @@ fit_design1$stage1
 ```
 
 The stage-1 table is built after constructing the stage-1 pseudo-outcome from
-the fitted stage-2 model. Terms involving `A1` are the stage-1 tailoring
-effects of interest.
+the fitted stage-2 model. In this example there is no observed `Y1`, so
+`Y1_tilde` is the stage-2 pseudo-outcome itself. Terms involving `A1` are the
+stage-1 tailoring effects of interest.
 
 ## Example 2: Design II or III cSMART with limited second-stage re-randomization
 
@@ -197,13 +220,12 @@ or III cSMARTs.
 design23_data <- simulate_csmart_data(
   n_clusters = 40,
   cluster_size = 20,
-  rerandomization = "responder",
-  p_rerand = 0.65,
-  seed = 2026
+  rerandomization = "nonresponder",
+  p_rerand = 0.7,
+  seed = 222
 )
 
 head(design23_data)
-table(is.na(design23_data$A2))
 ```
 
 Here the stage-2 treatment column contains `NA` for clusters that were not
@@ -235,8 +257,10 @@ fit_design23 <- cQL(
   stage1_treat = "A1",
   stage2_treat = "A2",
   stage2_tailoring_vars = c("A1", "X2"),
+  working_correlation = "exchangeable",
+  alpha = NULL,
   n_boot = 150,
-  seed = 2026,
+  seed = 412,
   verbose = FALSE
 )
 ```
@@ -282,6 +306,87 @@ pseudo-outcome rule is used:
 - for clusters not re-randomized at stage 2, the pseudo-outcome equals the
   observed outcome.
 
+## Example 3: Design II cSMART with an observed stage-1 outcome `Y1`
+
+This example uses limited second-stage re-randomization again, but now the
+input data include both an observed stage-1 intermediate outcome `Y1` and the
+final outcome `Y`.
+
+### Step 1: create a Design II-style dataset with both `Y1` and `Y`
+
+```{r}
+design23_y1_data <- simulate_csmart_data(
+  n_clusters = 40,
+  cluster_size = 20,
+  rerandomization = "nonresponder",
+  p_rerand = 0.7,
+  seed = 333
+)
+
+set.seed(412)
+cluster_effect_y1 <- stats::rnorm(
+  length(unique(design23_y1_data$cluster_id)),
+  sd = 0.25
+)
+names(cluster_effect_y1) <- as.character(unique(design23_y1_data$cluster_id))
+
+design23_y1_data$Y1 <- with(
+  design23_y1_data,
+  0.4 +
+    0.5 * X1 +
+    0.3 * A1 +
+    0.2 * X1 * A1 +
+    cluster_effect_y1[as.character(cluster_id)] +
+    stats::rnorm(nrow(design23_y1_data), sd = 0.6)
+)
+
+design23_y1_data$Y <- design23_y1_data$Y + 0.35 * design23_y1_data$Y1
+
+head(design23_y1_data[c("cluster_id", "patient_id", "X1", "A1", "X2", "A2", "Y1", "Y")])
+```
+
+### Step 2: specify the Q-functions
+
+```{r}
+s2_formula_y1 <- Y ~ Y1 + X1 * A1 + A1 * A2 + A2:X2
+s1_formula_y1 <- Y1_tilde ~ X1 * A1
+```
+
+Here `Y1` is allowed in the stage-2 formula, but the stage-1 formula still uses
+`Y1_tilde` as its response.
+
+### Step 3: fit the clustered Q-learning analysis
+
+```{r}
+fit_design23_y1 <- cQL(
+  data = design23_y1_data,
+  stage2_formula = s2_formula_y1,
+  stage1_formula = s1_formula_y1,
+  cluster = "cluster_id",
+  stage1_treat = "A1",
+  stage2_treat = "A2",
+  stage2_tailoring_vars = c("A1", "X2"),
+  working_correlation = "exchangeable",
+  alpha = NULL,
+  n_boot = 150,
+  seed = 412,
+  verbose = FALSE
+)
+```
+
+### Step 4: inspect the results
+
+```{r}
+fit_design23_y1$stage_summary
+fit_design23_y1$stage2
+fit_design23_y1$stage1
+```
+
+In this scenario the stage-1 pseudo-outcome is:
+
+- `Y1 +` the fitted stage-2 pseudo-outcome for clusters re-randomized at stage 2;
+- `Y1 + Y` for clusters not re-randomized at stage 2.
+
 ## Applying `cQL()` to your own data
 
 After your data are prepared, the analysis for your own cSMART dataset will
@@ -291,11 +396,13 @@ look like this:
 my_fit <- cQL(
   data = my_csmart_data,
   stage2_formula = Y ~ X1 * A1 + A1 * A2 + A2:X2,
-  stage1_formula = Y1 ~ X1 * A1,
+  stage1_formula = Y1_tilde ~ X1 * A1,
   cluster = "cluster_id",
   stage1_treat = "A1",
   stage2_treat = "A2",
   stage2_tailoring_vars = c("A1", "X2"),
+  working_correlation = "exchangeable",
+  alpha = NULL,
   n_boot = 1000,
   fixed_xi = 0.025
 )
@@ -313,6 +420,12 @@ In practice:
   variables;
 - then inspect `my_fit$stage1` to evaluate candidate stage-1 tailoring
   variables.
+
+If your data contain an observed stage-1 outcome `Y1`, keep the stage-1 formula
+as `Y1_tilde ~ ...` and optionally include `Y1` in `stage2_formula`.
+
+If you want a confidence level other than 95%, specify `alpha` directly. For
+example, use `alpha = 0.10` to request 90% confidence intervals.
 
 ## Notes
 

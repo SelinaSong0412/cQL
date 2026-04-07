@@ -11,14 +11,21 @@
 #'
 #' The data must be at the individual level, with one row per individual.
 #' Cluster-level treatments and stage-2 tailoring variables should be repeated
-#' across individuals within each cluster.
+#' across individuals within each cluster. The input may contain only the final
+#' outcome `Y`, or it may contain both an observed stage-1 intermediate outcome
+#' named `Y1` and the final outcome `Y`. The stage-1 formula must always use
+#' `Y1_tilde` as its response. Internally, the package sets `Y1_tilde` equal to
+#' the stage-2 pseudo-outcome when `Y1` is absent, and to `Y1 +` the stage-2
+#' pseudo-outcome when `Y1` is present.
 #'
 #' @param data A data frame containing one row per individual.
 #' @param stage2_formula A formula for the stage-2 Q-function, for example
-#'   `Y ~ X1 * A1 + A1 * A2 + A2:X2`.
+#'   `Y ~ X1 * A1 + A1 * A2 + A2:X2`. If the input data include an observed
+#'   stage-1 outcome column `Y1`, users may include `Y1` in this stage-2
+#'   formula as well.
 #' @param stage1_formula A formula for the stage-1 Q-function, for example
-#'   `Y1 ~ X1 * A1`. The response name does not need to exist in `data`; it is
-#'   created internally as the stage-1 pseudo-outcome.
+#'   `Y1_tilde ~ X1 * A1`. The response must be `Y1_tilde`; it is created
+#'   internally as the stage-1 pseudo-outcome.
 #' @param cluster Character scalar giving the cluster identifier column name.
 #' @param stage1_treat Character scalar giving the stage-1 treatment column
 #'   name.
@@ -29,8 +36,10 @@
 #'   tailoring variables that interact with `stage2_treat` in
 #'   `stage2_formula`. For the example `Y ~ X1 * A1 + A1 * A2 + A2:X2`, use
 #'   `c("A1", "X2")`.
-#' @param alpha Significance level used for the bootstrap confidence intervals.
-#'   Defaults to `0.05` for 95% confidence intervals.
+#' @param alpha Optional significance level used for the bootstrap confidence
+#'   intervals. If `NULL`, the default `0.05` is used, which gives 95%
+#'   confidence intervals. For example, set `alpha = 0.10` to request 90%
+#'   confidence intervals.
 #' @param n_boot Number of bootstrap replicates for each stage. Defaults to
 #'   `1000`.
 #' @param working_correlation Working correlation used when estimating the
@@ -77,7 +86,7 @@
 #' fit <- cQL(
 #'   data = toy_data,
 #'   stage2_formula = Y ~ X1 * A1 + A1 * A2 + A2:X2,
-#'   stage1_formula = Y1 ~ X1 * A1,
+#'   stage1_formula = Y1_tilde ~ X1 * A1,
 #'   cluster = "cluster_id",
 #'   stage1_treat = "A1",
 #'   stage2_treat = "A2",
@@ -97,7 +106,7 @@ cQL <- function(data,
                 stage1_treat,
                 stage2_treat,
                 stage2_tailoring_vars,
-                alpha = 0.05,
+                alpha = NULL,
                 n_boot = 1000,
                 working_correlation = c("exchangeable", "independence"),
                 m_method = c("fixed_xi", "full_n", "user"),
@@ -120,9 +129,7 @@ cQL <- function(data,
   if (!is.character(stage2_treat) || length(stage2_treat) != 1L) {
     stop("`stage2_treat` must be a single column name.", call. = FALSE)
   }
-  if (!is.numeric(alpha) || length(alpha) != 1L || alpha <= 0 || alpha >= 1) {
-    stop("`alpha` must be a single number between 0 and 1.", call. = FALSE)
-  }
+  alpha <- .cql_resolve_alpha(alpha)
   if (!is.numeric(n_boot) || length(n_boot) != 1L || n_boot < 50) {
     stop("`n_boot` must be a single number of at least 50.", call. = FALSE)
   }
@@ -157,7 +164,8 @@ cQL <- function(data,
     data = prepared$data,
     stage2_treat = stage2_treat,
     stage2_available = prepared$data$.cql_stage2_available,
-    outcome_name = outcome_name
+    outcome_name = outcome_name,
+    stage1_outcome_name = prepared$stage1_outcome_name
   )
   stage1_fit <- stats::lm(stage1_formula, data = stage1_data)
   if (anyNA(stats::coef(stage1_fit))) {
@@ -216,6 +224,7 @@ cQL <- function(data,
     stage2_treat = stage2_treat,
     stage1_response = stage1_response,
     outcome_name = outcome_name,
+    stage1_outcome_name = prepared$stage1_outcome_name,
     ref_coef_stage1 = stats::coef(stage1_fit),
     ref_coef_stage2 = stats::coef(stage2_fit),
     m = stage1_m,
@@ -320,8 +329,25 @@ print.cQL_fit <- function(x, ...) {
     stage2_treat = stage2_treat,
     stage2_tailoring_vars = stage2_tailoring_vars
   )
+  .cql_validate_stage1_formula(stage1_formula = stage1_formula)
 
   out <- data
+  stage1_outcome_name <- if ("Y1" %in% names(out)) "Y1" else NULL
+  if (!is.null(stage1_outcome_name)) {
+    if (!is.numeric(out[[stage1_outcome_name]])) {
+      stop(
+        "The observed stage-1 outcome column `Y1` must be numeric.",
+        call. = FALSE
+      )
+    }
+    if (anyNA(out[[stage1_outcome_name]])) {
+      stop(
+        "The observed stage-1 outcome column `Y1` cannot contain missing values.",
+        call. = FALSE
+      )
+    }
+  }
+
   mapping1 <- .cql_recode_binary_treatment(out[[stage1_treat]], stage1_treat)
   out[[stage1_treat]] <- mapping1$values
 
@@ -375,6 +401,7 @@ print.cQL_fit <- function(x, ...) {
   list(
     data = out,
     stage2_data = stage2_data,
+    stage1_outcome_name = stage1_outcome_name,
     treatment_mapping = list(
       stage1 = mapping1$mapping,
       stage2 = mapping2$mapping
@@ -408,6 +435,29 @@ print.cQL_fit <- function(x, ...) {
       )
     }
   }
+}
+
+.cql_validate_stage1_formula <- function(stage1_formula) {
+  response <- .cql_formula_response(stage1_formula)
+  if (!identical(response, "Y1_tilde")) {
+    stop(
+      "The stage-1 formula response must be `Y1_tilde`.",
+      call. = FALSE
+    )
+  }
+}
+
+.cql_resolve_alpha <- function(alpha) {
+  if (is.null(alpha)) {
+    return(0.05)
+  }
+  if (!is.numeric(alpha) || length(alpha) != 1L || alpha <= 0 || alpha >= 1) {
+    stop(
+      "`alpha` must be NULL or a single number between 0 and 1.",
+      call. = FALSE
+    )
+  }
+  alpha
 }
 
 .cql_formula_response <- function(formula_obj) {
@@ -485,7 +535,8 @@ print.cQL_fit <- function(x, ...) {
                                 data,
                                 stage2_treat,
                                 stage2_available,
-                                outcome_name) {
+                                outcome_name,
+                                stage1_outcome_name = NULL) {
   plus_data <- data
   minus_data <- data
   plus_data[[stage2_treat]] <- 1
@@ -496,11 +547,16 @@ print.cQL_fit <- function(x, ...) {
   q_opt <- pmax(q_plus, q_minus)
 
   if (all(stage2_available)) {
-    return(q_opt)
+    pseudo <- q_opt
+  } else {
+    pseudo <- data[[outcome_name]]
+    pseudo[stage2_available] <- q_opt[stage2_available]
   }
 
-  pseudo <- data[[outcome_name]]
-  pseudo[stage2_available] <- q_opt[stage2_available]
+  if (!is.null(stage1_outcome_name)) {
+    pseudo <- data[[stage1_outcome_name]] + pseudo
+  }
+
   pseudo
 }
 
@@ -636,6 +692,7 @@ print.cQL_fit <- function(x, ...) {
                                   stage2_treat,
                                   stage1_response,
                                   outcome_name,
+                                  stage1_outcome_name,
                                   ref_coef_stage1,
                                   ref_coef_stage2,
                                   m,
@@ -669,7 +726,8 @@ print.cQL_fit <- function(x, ...) {
         data = boot_data,
         stage2_treat = stage2_treat,
         stage2_available = boot_data$.cql_stage2_available,
-        outcome_name = outcome_name
+        outcome_name = outcome_name,
+        stage1_outcome_name = stage1_outcome_name
       )
 
       fit_stage1 <- try(stats::lm(stage1_formula, data = boot_data), silent = TRUE)

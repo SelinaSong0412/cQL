@@ -14,7 +14,7 @@ cQL(
   stage1_treat,
   stage2_treat,
   stage2_tailoring_vars,
-  alpha = 0.05,
+  alpha = NULL,
   n_boot = 1000,
   working_correlation = c("exchangeable", "independence"),
   m_method = c("fixed_xi", "full_n", "user"),
@@ -28,11 +28,13 @@ cQL(
 \item{data}{A data frame containing one row per individual.}
 
 \item{stage2_formula}{A formula for the stage-2 Q-function, for example
-\code{Y ~ X1 * A1 + A1 * A2 + A2:X2}.}
+\code{Y ~ X1 * A1 + A1 * A2 + A2:X2}. If the input data include an observed
+stage-1 outcome column \code{Y1}, users may include \code{Y1} in this stage-2
+formula as well.}
 
 \item{stage1_formula}{A formula for the stage-1 Q-function, for example
-\code{Y1 ~ X1 * A1}. The response name does not need to exist in \code{data}; it is
-created internally as the stage-1 pseudo-outcome.}
+\code{Y1_tilde ~ X1 * A1}. The response must be \code{Y1_tilde}; it is created
+internally as the stage-1 pseudo-outcome.}
 
 \item{cluster}{Character scalar giving the cluster identifier column name.}
 
@@ -48,8 +50,10 @@ tailoring variables that interact with \code{stage2_treat} in
 \code{stage2_formula}. For the example \code{Y ~ X1 * A1 + A1 * A2 + A2:X2}, use
 \code{c("A1", "X2")}.}
 
-\item{alpha}{Significance level used for the bootstrap confidence intervals.
-Defaults to \code{0.05} for 95\% confidence intervals.}
+\item{alpha}{Optional significance level used for the bootstrap confidence
+intervals. If \code{NULL}, the default \code{0.05} is used, which gives 95\%
+confidence intervals. For example, set \code{alpha = 0.10} to request 90\%
+confidence intervals.}
 
 \item{n_boot}{Number of bootstrap replicates for each stage. Defaults to
 \code{1000}.}
@@ -115,7 +119,12 @@ re-randomized.
 
 The data must be at the individual level, with one row per individual.
 Cluster-level treatments and stage-2 tailoring variables should be repeated
-across individuals within each cluster.
+across individuals within each cluster. The input may contain only the final
+outcome \code{Y}, or it may contain both an observed stage-1 intermediate outcome
+named \code{Y1} and the final outcome \code{Y}. The stage-1 formula must always use
+\code{Y1_tilde} as its response. Internally, the package sets \code{Y1_tilde} equal to
+the stage-2 pseudo-outcome when \code{Y1} is absent, and to \verb{Y1 +} the stage-2
+pseudo-outcome when \code{Y1} is present.
 }
 \examples{
 toy_data <- simulate_csmart_data(
@@ -129,7 +138,7 @@ toy_data <- simulate_csmart_data(
 fit <- cQL(
   data = toy_data,
   stage2_formula = Y ~ X1 * A1 + A1 * A2 + A2:X2,
-  stage1_formula = Y1 ~ X1 * A1,
+  stage1_formula = Y1_tilde ~ X1 * A1,
   cluster = "cluster_id",
   stage1_treat = "A1",
   stage2_treat = "A2",
